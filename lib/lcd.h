@@ -13,6 +13,8 @@ typedef struct{
     unsigned int brillo;
     unsigned int dato;
     unsigned int led;
+    unsigned int columnas;
+    unsigned int filas;
     
 }pantalla_t;
 
@@ -28,8 +30,8 @@ void scrollleft(pantalla_t*);
 
 void scrollright(pantalla_t*);
 
-void lcd_print(pantalla_t*);
+void lcdprint(pantalla_t*);
 
-void lcd_send(pantalla_t*);
+void lcdsend(pantalla_t*);
 
 #endif
