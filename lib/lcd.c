@@ -8,29 +8,29 @@ void lcdinit (pantalla_t* iniciar){
     if(iniciar -> puerto =='a'){
     RCC -> APB2ENR |= RCC_APB2ENR_IOPAEN;
     
-    for (int i = 0; i <= 7; i ++){
+    for (int i=0;i<8;i++){
         if(iniciar -> datos [i] < 7){
-            GPIOA -> CRL & (0XF << (iniciar -> datos [i] * 4));
-            GPIOA -> CRL & (0X1 << (iniciar -> datos [i] * 4));
+            GPIOA -> CRL & ~(0XF << (iniciar -> datos [i] * 4));
+            GPIOA -> CRL |= (0X1 << (iniciar -> datos [i] * 4));
         }else{
-            GPIOA -> CRH & (0XF << ((iniciar -> datos [i] %8) * 4));
-            GPIOA -> CRH & (0X1 << ((iniciar -> datos [i] %8) * 4));
+            GPIOA -> CRH & ~(0XF << ((iniciar -> datos [i] %8) * 4));
+            GPIOA -> CRH |= (0X1 << ((iniciar -> datos [i] %8) * 4));
         }
     }
-        if(iniciar ->  rw < 7){
-            GPIOA -> CRL & (0XF << (iniciar -> rw * 4));
-            GPIOA -> CRL & (0X1 << (iniciar -> rw * 4));
+        if(iniciar ->  rw < 8){
+            GPIOA -> CRL & ~(0XF << (iniciar -> rw * 4));
+            GPIOA -> CRL |= (0X1 << (iniciar -> rw * 4));
         }else{
-            GPIOA -> CRH & (0XF << ((iniciar -> rw %8) * 4));
-            GPIOA -> CRH & (0X1 << ((iniciar -> rw %8) * 4));
+            GPIOA -> CRH & ~(0XF << ((iniciar -> rw %8) * 4));
+            GPIOA -> CRH |= (0X1 << ((iniciar -> rw %8) * 4));
         }
 
-        if(iniciar ->  rs < 7){
-            GPIOA -> CRL & (0XF << (iniciar -> rs * 4));
-            GPIOA -> CRL & (0X1 << (iniciar -> rs * 4));
+        if(iniciar ->  rs < 8){
+            GPIOA -> CRL & ~(0XF << (iniciar -> rs * 4));
+            GPIOA -> CRL |= (0X1 << (iniciar -> rs * 4));
         }else{
-            GPIOA -> CRH & (0XF << ((iniciar -> rs %8) * 4));
-            GPIOA -> CRH & (0X1 << ((iniciar -> rs %8) * 4));
+            GPIOA -> CRH & ~(0XF << ((iniciar -> rs %8) * 4));
+            GPIOA -> CRH |= (0X1 << ((iniciar -> rs %8) * 4));
         }
     
 }
@@ -38,123 +38,132 @@ void lcdinit (pantalla_t* iniciar){
         if(iniciar -> puerto == 'b'){
     RCC -> APB2ENR |= RCC_APB2ENR_IOPBEN;
     
-    for (int i = 0; i <= 7; i ++){
+    for (int i=0; i<8; i ++){
         if(iniciar -> datos [i] < 7){
             GPIOB -> CRL & ~(0XF << (iniciar -> datos [i] * 4));
-            GPIOB -> CRL & (0X1 << (iniciar -> datos [i] * 4));
+            GPIOB -> CRL |= (0X1 << (iniciar -> datos [i] * 4));
         }else{
             GPIOB -> CRH & ~(0XF << ((iniciar -> datos [i] %8) * 4));
-            GPIOB -> CRH & (0X1 << ((iniciar -> datos [i] %8) * 4));
+            GPIOB -> CRH |= (0X1 << ((iniciar -> datos [i] %8) * 4));
         }
     }
-        if(iniciar ->  rw < 7){
+        if(iniciar ->  rw < 8){
             GPIOB -> CRL & ~(0XF << (iniciar -> rw * 4));
-            GPIOB -> CRL & (0X1 << (iniciar -> rw  * 4));
+            GPIOB -> CRL |= (0X1 << (iniciar -> rw * 4));
         }else{
             GPIOB -> CRH & ~(0XF << ((iniciar -> rw %8) * 4));
-            GPIOB -> CRH & (0X1 << ((iniciar -> rw %8) * 4));
+            GPIOB -> CRH |= (0X1 << ((iniciar -> rw %8) * 4));
         }
 
-        if(iniciar -> rs < 7){
+        if(iniciar -> rs < 8){
             GPIOB -> CRL & ~(0XF << (iniciar -> rs * 4));
-            GPIOB -> CRL & (0X1 << (iniciar -> rs  * 4));
+            GPIOB -> CRL |= (0X1 << (iniciar -> rs * 4));
         }else{
             GPIOB -> CRH & ~(0XF << ((iniciar -> rs %8) * 4));
-            GPIOB -> CRH & (0X1 << ((iniciar -> rs %8) * 4));
+            GPIOB -> CRH |= (0X1 << ((iniciar -> rs %8) * 4));
         }
     
 }
 
-        if(iniciar -> puerto == 'c'){
+
+    if(iniciar -> puerto == 'c'){
     RCC -> APB2ENR |= RCC_APB2ENR_IOPCEN;
     
-    for (int i = 0; i <= 7; i ++){
+    for (int i=0; i<8; i ++){
         if(iniciar -> datos [i] < 7){
-            GPIOC -> CRL & (0XF << (iniciar -> datos [i] * 4));
-            GPIOC -> CRL & (0X1 << (iniciar -> datos [i] * 4));
+            GPIOC -> CRL & ~(0XF << (iniciar -> datos [i] * 4));
+            GPIOC -> CRL |= (0X1 << (iniciar -> datos [i] * 4));
         }else{
-            GPIOC -> CRH & (0XF << ((iniciar -> datos [i] %8) * 4));
-            GPIOC -> CRH & (0X1 << ((iniciar -> datos [i] %8) * 4));
+            GPIOC -> CRH & ~(0XF << ((iniciar -> datos [i] %8) * 4));
+            GPIOC -> CRH |= (0X1 << ((iniciar -> datos [i] %8) * 4));
         }
     }
-        if(iniciar ->  rw < 7){
-            GPIOC -> CRL & (0XF << (iniciar -> rw * 4));
-            GPIOC -> CRL & (0X1 << (iniciar -> rw * 4));
+        if(iniciar ->  rw < 8){
+            GPIOC -> CRL & ~(0XF << (iniciar -> rw * 4));
+            GPIOC -> CRL |= (0X1 << (iniciar -> rw * 4));
         }else{
-            GPIOC -> CRH & (0XF << ((iniciar -> rw %8) * 4));
-            GPIOC -> CRH & (0X1 << ((iniciar -> rw %8) * 4));
+            GPIOC -> CRH & ~(0XF << ((iniciar -> rw %8) * 4));
+            GPIOC -> CRH |= (0X1 << ((iniciar -> rw %8) * 4));
         }
 
-        if(iniciar ->  rs < 7){
-            GPIOC -> CRL & (0XF << (iniciar -> rs * 4));
-            GPIOC -> CRL & (0X1 << (iniciar -> rs  * 4));
+        if(iniciar ->  rs < 8){
+            GPIOC -> CRL & ~(0XF << (iniciar -> rs * 4));
+            GPIOC -> CRL |= (0X1 << (iniciar -> rs * 4));
         }else{
-            GPIOC -> CRH & (0XF << ((iniciar -> rs %8) * 4));
-            GPIOC -> CRH & (0X1 << ((iniciar -> rs %8) * 4));
+            GPIOC -> CRH & ~(0XF << ((iniciar -> rs %8) * 4));
+            GPIOC -> CRH |= (0X1 << ((iniciar -> rs %8) * 4));
         }
     
 }
 
-        if(iniciar -> puerto == 'd'){
+    if(iniciar -> puerto == 'd'){
     RCC -> APB2ENR |= RCC_APB2ENR_IOPDEN;
     
-    for (int i = 0; i <= 7; i ++){
+    for (int i=0; i<8; i ++){
         if(iniciar -> datos [i] < 7){
-            GPIOD -> CRL & (0XF << (iniciar -> datos [i] * 4));
-            GPIOD -> CRL & (0X1 << (iniciar -> datos [i] * 4));
+            GPIOD -> CRL & ~(0XF << (iniciar -> datos [i] * 4));
+            GPIOD -> CRL |= (0X1 << (iniciar -> datos [i] * 4));
+        
         }else{
-            GPIOD -> CRH & (0XF << ((iniciar -> datos [i] %8) * 4));
-            GPIOD -> CRH & (0X1 << ((iniciar -> datos [i] %8) * 4));
-        }
+            
+            GPIOD -> CRH & ~(0XF << ((iniciar -> datos [i] %8) * 4));
+            GPIOD -> CRH |= (0X1 << ((iniciar -> datos [i] %8) * 4));
+         }
     }
-        if(iniciar ->  rw < 7){
-            GPIOD -> CRL & (0XF << (iniciar -> rw * 4));
-            GPIOD -> CRL & (0X1 << (iniciar -> rw * 4));
+        if(iniciar ->  rw < 8){
+        
+            GPIOD -> CRL & ~(0XF << (iniciar -> rw * 4));
+            GPIOD -> CRL |= (0X1 << (iniciar -> rw * 4));
+        
         }else{
-            GPIOD -> CRH & (0XF << ((iniciar -> rw %8) * 4));
-            GPIOD -> CRH & (0X1 << ((iniciar -> rw %8) * 4));
+        
+            GPIOD -> CRH & ~(0XF << ((iniciar -> rw %8) * 4));
+            GPIOD -> CRH |= (0X1 << ((iniciar -> rw %8) * 4));
         }
 
-        if(iniciar ->  rs < 7){
-            GPIOD -> CRL & (0XF << (iniciar -> rs * 4));
-            GPIOD -> CRL & (0X1 << (iniciar -> rs * 4));
+        if(iniciar ->  rs < 8){
+        
+            GPIOD -> CRL & ~(0XF << (iniciar -> rs * 4));
+            GPIOD -> CRL |= (0X1 << (iniciar -> rs * 4));
+        
         }else{
-            GPIOD -> CRH & (0XF << ((iniciar -> rs %8) * 4));
-            GPIOD -> CRH & (0X1 << ((iniciar -> rs %8) * 4));
+        
+            GPIOD -> CRH & ~(0XF << ((iniciar -> rs %8) * 4));
+            GPIOD -> CRH |= (0X1 << ((iniciar -> rs %8) * 4));
         }
     
 }
-
 }
 
 void lcdclear(pantalla_t* limpiar){
 
-    int borrar[8] = {1,0,0,0,0,0,0,0};
-
-    for(int i = 0; i < 8; i++){
-        if(borrar[i]){
-            limpiar->puerto->BSRR |= (1 << limpiar->datos[i]);
-        }else{
-            limpiar->puerto->BSRR |= (1 << (limpiar->datos[i] + 16));
+     int borrar [7] ={0,0,0,0,0,0,0,1};
+    
+    for(int i = 0; i <8; i++){
+            if(borrar [i]) {limpiar -> puerto -> BSRR |= (1 << limpiar -> datos [i]);
+            }else{
+                limpiar -> puerto -> BSRR |= (1 << (limpiar -> datos [i] + 16));
+            }
         }
+        limpiar -> puerto -> BSRR |= (1 << (limpiar -> rw) + 16);
+        limpiar -> puerto -> BSRR |= (1 << (limpiar -> rs) + 16);
     }
 
-    limpiar->puerto->BSRR |= (1 << (limpiar->rw + 16));
-    limpiar->puerto->BSRR |= (1 << (limpiar->rs + 16));
-}
 
-void lcdcursor(pantalla_t* setcursor){
-
+void lcdcursor(pantalla_t* setcursor, unsigned int columnas, unsigned int filas){
+ 
     setcursor -> puerto -> BSRR |= (1 << (setcursor -> rw) + 16);
     setcursor -> puerto -> BSRR |= (1 << setcursor -> rs);
 
-    int set = 0x00 + setcursor -> cursor;
+    int row_shift [2] = {0x00, 0x40};
 
-    for(int i = 0; i <= 7; i++){
-        if((set >> i) %2 == 1){
+    int salida = columnas + row_shift [filas];
+
+    for(int i = 0; i < 8; i++){
+        if((salida >> i) %2 == 1){
             setcursor -> puerto -> BSRR |= (1 << setcursor -> datos [i]);
         }else{
-            setcursor -> puerto -> BSRR |= (1 << (setcursor -> datos [i]) + 16);
+            setcursor -> puerto -> BSRR |= (1 << setcursor -> datos [i] + 16);
         }
     }
 }
@@ -165,7 +174,10 @@ void lcdbrillo(pantalla_t* brillo){
 
 void scrollright(pantalla_t* right){
 
-    int mover = 0000011100; //0 0 0 0 0 1 1 1 0 0
+    int mover = 0000011100;
+
+    right -> puerto -> BSRR |= (1 << right -> rw + 16);
+    right -> puerto -> BSRR |= (1 << right -> rs + 16);
 
     for(int i = 0; i <= 7; i++){
         if((mover >> i) %2 == 1){
@@ -178,7 +190,11 @@ void scrollright(pantalla_t* right){
 
 void scrollleft(pantalla_t* left){
 
-    int mover = 0000011000; //0 0 0 0 0 1 1 0 0 0
+    int mover = 0000011000; 
+
+    left -> puerto -> BSRR |= (1 << left -> rw + 16);
+    left -> puerto -> BSRR |= (1 << left -> rs + 16);
+
 
     for(int i = 0; i <= 7; i++){
         if((mover >> i) %2 == 1){
@@ -188,18 +204,20 @@ void scrollleft(pantalla_t* left){
         }
     }
 }
-
-void lcd_print(pantalla_t*led, char *txt){
+void lcdprint(pantalla_t*led, char *txt){
     while(*txt){
         lcd_enviar(led,*txt);
         txt++;
     }
 }
 
-void lcd_send(pantalla_t *lcd, uint8_t dato, int char_0_cmd){
+void lcdsend(pantalla_t *lcd, uint8_t dato, int char_0_cmd){
+    
     lcd->puerto->BSRR|=(1<<(lcd->rw+16));
     if(char_0_cmd) lcd->puerto->BSRR|=(1<<(lcd->rs));
+    
     else lcd->puerto->BSRR |=(1<<(lcd->rs+16));
+    
     for(int i=0;i<7;i++){
         if(dato&(1<<i))lcd->puerto->BSRR|=(1<<(lcd->datos[i]));
         else lcd->puerto->BSRR|=(1<<(lcd->datos[i]+16));
